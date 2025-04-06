@@ -50,6 +50,23 @@ public class TigerCenterHomePage extends AbstractAngularPage {
     findButtonLink(NavButton.GPA_CALCULATOR).click();
   }
 
+  /**
+   * Select the <em>Hours and Locations</em> feature.
+   * <p>
+   * This action navigates to the Hours and Locations page of the TigerCenter app.
+   */
+  public void selectHoursAndLocations(){
+    findButtonLink(NavButton.HOURS_AND_LOCATIONS).click();
+  }
+
+  public void clickRITHomeLink()
+  {
+    final List<DomElement> allAnchors = angularView.findChildBy(By.xpath("//*[@id=\"angularApp\"]/" +
+            "app-root/div[2]/mat-sidenav-container[1]/mat-sidenav-content/headers"))
+            .findChildrenBy(HtmlUtils.ANCHOR_FINDER);
+    allAnchors.getLast().click();
+  }
+
   //
   // Private
   //
