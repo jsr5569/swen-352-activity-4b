@@ -47,7 +47,7 @@ public class SimpleClassSearchTest extends AbstractWebTest {
     void enterSearchTerm() {
         classSearchPage.searchForClass("SWEN");
         List<String> results = classSearchPage.getSearchResults();
-        assertNotEquals(results.size(), 0);
+        assertNotEquals(0, results.size());
         results.forEach(LOGGER::info);
     }
 
