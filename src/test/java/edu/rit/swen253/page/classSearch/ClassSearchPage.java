@@ -18,6 +18,7 @@ public class ClassSearchPage extends AbstractAngularPage {
     private static final By SEARCH_BUTTON = By.className("classSearchSearchButton");
     private static final By ADVANCED_SEARCH = By.className("classSearchAdvancedSearchText");
     private static final By SAVE_OPTIONS = By.className("advancedSearchDoneButton");
+    private static final By GCCIS_MAJOR = By.tagName("mat-expansion-panel-header");
     private List<DomElement> searchResults;
 
 
@@ -32,9 +33,14 @@ public class ClassSearchPage extends AbstractAngularPage {
 
     public void searchForClass(String query) {
         DomElement input = findOnPage(SEARCH_BAR);
-        DomElement searchButton = findOnPage(SEARCH_BUTTON);
         input.sendKeys(query);
-        searchButton.click();
+        try {
+            DomElement searchButton = findOnPage(SEARCH_BUTTON);
+            searchButton.click();
+        } catch (Exception e){
+            input.sendKeys(Keys.ENTER);
+
+        }
     }
 
     public List<String> getSearchResults() {
@@ -67,5 +73,10 @@ public class ClassSearchPage extends AbstractAngularPage {
     public void saveOptions() {
         DomElement saveButton = findOnPage(SAVE_OPTIONS);
         saveButton.click();
+    }
+
+    public void openCourseCatalog() {
+        DomElement advancedSearch = findOnPage(ADVANCED_SEARCH);
+        advancedSearch.click();
     }
 }

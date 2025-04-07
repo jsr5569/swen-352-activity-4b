@@ -46,6 +46,11 @@ public class SimpleClassSearchTest extends AbstractWebTest {
     @DisplayName("Test Enter Search Term")
     void enterSearchTerm() {
         classSearchPage.searchForClass("SWEN");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         List<String> results = classSearchPage.getSearchResults();
         assertNotEquals(0, results.size());
         results.forEach(LOGGER::info);
